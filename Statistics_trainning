@@ -153,3 +153,22 @@ fitness_data.describe()
 
 """ ------------------------------------------------------------------------------------------- """
 
+""" Measuring Dispersion """
+
+fitness_data_numeric = fitness_data.drop(['Product', 'Gender', 'MaritalStatus'], axis=1, inplace=True)
+fitness_data.shape
+
+def calculate_variance(data):
+    sq_diff =0
+    avg =sum(data)/len(data)
+
+    for n in data:
+        sq_diff += (n - avg)**2
+
+    return (sq_diff/(len(data)-1))
+
+
+    calculate_variance(fitness_data['Usage'])
+    fitness_data['Usage'].var()
+
+    fitness_data.std()
