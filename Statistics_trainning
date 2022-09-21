@@ -1,0 +1,155 @@
+#importing libraries
+
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+
+#loading data
+fitness_data = pd.read_csv("C:/Users/aleja/OneDrive/Documents/Python/Statistical-Concepts/CardioGoodFitness.csv")
+fitness_data.head()
+fitness_data.tail()
+fitness_data.sample(5)
+fitness_data.shape
+fitness_data.info()
+fitness_data.columns
+fitness_data.index
+fitness_data.dtypes
+fitness_data.isnull().sum()
+fitness_data['Product'].head()
+fitness_data['Product'].unique()
+fitness_data['Product'].nunique()
+fitness_data['Gender'].unique()
+fitness_data['Usage'].unique()
+fitness_data['Usage'].nunique()
+fitness_data['Usage'].count()
+fitness_data['Usage'].value_counts()
+
+#computing mean and median of a distibution
+
+income = fitness_data['Income']
+income.head()
+
+sorted_income = income.sort_values().reset_index(drop=True) #reset the original indexes to make statistics
+sorted_income.head()
+
+""" Calculation of the mean """
+
+def calculate_mean(data):
+    num_elements = len(data)
+    print('Number of elements: ', num_elements)
+
+    weight_sum = data.sum()
+    print('Sum ', weight_sum)
+
+    mean_value = weight_sum / num_elements
+    print('Mean: ', mean_value)
+
+    return mean_value
+
+calculate_mean(fitness_data['Income'])
+income_mean = fitness_data['Income'].mean()
+income_mean
+
+""" Calculation of the median """
+
+def calculate_median(data):
+    num_elements = len(data)
+
+    if(num_elements % 2 == 0):
+        return (data[(num_elements / 2) - 1] + data[(num_elements / 2)]) / 2
+
+    else:
+        return (data[((num_elements + 1) / 2) - 1])
+
+calculate_median(fitness_data['Income'])
+calculate_median(sorted_income)
+
+income_median = fitness_data['Income'].median()
+income_median
+
+""" Visualizing distributions with seaborn and Matplotlib """
+
+#boxplot
+plt.figure(figsize=(12, 6))
+
+sns.boxplot(data=fitness_data, y='Income', showmeans=True)
+
+plt.show()
+
+#histogram
+
+#histogram 1
+plt.figure(figsize=(12,6))
+
+sns.histplot(data=fitness_data['Income'], bins=30)
+
+plt.axvline(income_mean, color='r', label='mean')
+
+plt.legend()
+plt.show()
+
+
+#mode
+
+income_mode = fitness_data['Income'].mode()
+income_mode
+
+age_mode = fitness_data['Age'].mode()
+age_mode
+#histogram2
+
+plt.figure(figsize=(12,6))
+
+sns.histplot(data=fitness_data['Income'], bins=30)
+plt.axvline(income_median, color='orange', label= 'median')
+plt.axvline(income_mean, color='r', label='mean')
+plt.legend()
+plt.show()
+
+
+#parametrers
+
+income_mean = fitness_data['Income'].mean()
+income_median = fitness_data['Income'].median()
+income_mode = fitness_data['Income'].mode().values[0]
+
+age_mean = fitness_data['Age'].mean()
+age_median = fitness_data['Age'].median()
+age_mode = fitness_data['Age'].mode().values[0]
+
+
+#histogram 3
+""" with income"""
+plt.figure(figsize=(12,6))
+sns.histplot(data=fitness_data['Income'])
+plt.axvline(income_mean, color='r', label='mean')
+plt.axvline(income_median, color='orange', label='median')
+plt.axvline(income_mode, color='y', label='mode')
+
+plt.legend()
+plt.show()
+
+"""with age"""
+
+
+
+plt.figure(figsize=(12, 6))
+
+sns.histplot(data=fitness_data['Age'])
+
+plt.axvline(age_mean, color='r', label='mean')
+plt.axvline(age_median, color='orange', label='median')
+plt.axvline(age_mode, color='y', label='mode')
+
+
+plt.legend()
+plt.show()
+
+#describe fuction 
+
+fitness_data.describe()
+
+""" ------------------------------------------------------------------------------------------- """
+
