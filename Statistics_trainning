@@ -172,3 +172,61 @@ def calculate_variance(data):
     fitness_data['Usage'].var()
 
     fitness_data.std()
+
+
+
+
+    """---------------------------- """
+
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import numpy as np
+    fitness_data = pd.read_csv("C:/Users/aleja/OneDrive/Documents/Python/Statistical-Concepts/CardioGoodFitness.csv")
+    fitness_data.shape
+    fitness_data.columns
+
+    fitness_data.drop(['Product', 'Gender', 'MaritalStatus'], axis=1, inplace=True)
+    fitness_data.info()
+
+
+def calculate_variance(data):
+    sq_diff =0
+    avg =sum(data)/len(data)
+
+    for n in data:
+        sq_diff += (n - avg)**2
+
+    return (sq_diff/(len(data)-1))
+
+
+    calculate_variance(fitness_data['Usage'])
+    fitness_data['Usage'].var()
+
+    fitness_data.std()
+
+    calculate_variance(fitness_data['Income'])
+    std_Income = fitness_data['Income'].std()
+    std_Usage = fitness_data['Usage'].std()
+    std_education = fitness_data['Education']
+
+
+    """ ------------------"""
+
+    miles_mean = fitness_data['Miles'].mean()
+    miles_std = fitness_data['Miles'].std()
+
+
+
+    plt.figure(figsize=(12,6))
+
+    sns.histplot(fitness_data['Miles'], bins=20)
+    
+    plt.axvline(miles_mean, color='r', label='mean')
+
+    plt.axvline(miles_mean - miles_std, color='orange', label='-1 std dev')
+    plt.axvline(miles_mean + miles_std, color='orange', label='+1 std dev')
+
+    plt.legend()
+    plt.show()
+
