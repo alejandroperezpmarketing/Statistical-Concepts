@@ -51,3 +51,17 @@ data['m_depth'] = data['m_depth'].fillna(data['m_depth'].median())
 data.isnull().sum()
 
 data.to_csv('mobile_data_cleaned', index= False)
+
+
+#----------------------------------------------------------------------
+
+data.columns
+numeric_data = data.drop(['bluetooth', 'dual_sim', 'four_g', 'three_g', 'touch_screen', 'wifi', 'price_range'], axis=1)
+numeric_data.head()
+
+categorical_data = data[['bluetooth' , 'dual_sim', 'four_g', 'three_g', 'touch_screen', 'wifi', 'price_range']]
+
+categorical_data.head()
+
+#vizualization
+
