@@ -5,3 +5,29 @@ import numpy as np
 data = pd.read_csv('/workspaces/Statistical-Concepts/mobile_price_classification.csv')
 data.head()
 
+data.shape
+data.columns
+data = data.drop('id', axis = 1)
+data.shape
+
+data.describe()
+
+data = data.rename(columns=
+
+{
+
+"blue" : "bluetooth",
+"fc" : "fc_megapixel",
+"pc" : "pc_megapixel",
+"m_dep" : "m_depth"
+
+})
+
+data.columns
+
+dupes = data.duplicated()
+
+dupes.head()
+sum(dupes)
+data = data.drop_duplicates()
+data.shape
