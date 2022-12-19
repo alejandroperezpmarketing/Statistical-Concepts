@@ -31,3 +31,5 @@ dupes.head()
 sum(dupes)
 data = data.drop_duplicates()
 data.shape
+
+data.isnull().sum()
