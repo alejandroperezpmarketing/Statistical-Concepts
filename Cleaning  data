@@ -47,3 +47,5 @@ data.isnull().sum()
 data['mobile_wt'] = data['mobile_wt'].fillna(data['mobile_wt'].median())
 data.isnull().sum()
 
+data['m_depth'] = data['m_depth'].fillna(data['m_depth'].median())
+data.isnull().sum()
