@@ -49,3 +49,5 @@ data.isnull().sum()
 
 data['m_depth'] = data['m_depth'].fillna(data['m_depth'].median())
 data.isnull().sum()
+
+data.to_csv('mobile_data_cleaned', index= False)
