@@ -33,3 +33,17 @@ data = data.drop_duplicates()
 data.shape
 
 data.isnull().sum()
+data.isna().sum()
+
+data['fc_megapixel'] = data['fc_megapixel'].fillna(0)
+data.isnull().sum()
+len(data['ram'].unique())   
+
+data['ram'] = data['ram'].fillna(method="backfill")
+len(data['ram'].unique())
+
+data.isnull().sum()
+
+data['mobile_wt'] = data['mobile_wt'].fillna(data['mobile_wt'].median())
+data.isnull().sum()
+
