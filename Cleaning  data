@@ -65,3 +65,10 @@ categorical_data.head()
 
 #vizualization
 
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+fig, ax = plt.subplots(figsize = (10, 8))
+
+sns.boxplot(numeric_data['ram'],
+            orient = 'v')
