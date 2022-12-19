@@ -1,0 +1,7 @@
+import pandas as pd
+import os
+import numpy as np
+
+data = pd.read_csv('/workspaces/Statistical-Concepts/mobile_price_classification.csv')
+data.head()
+
